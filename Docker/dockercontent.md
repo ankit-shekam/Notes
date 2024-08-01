@@ -7,6 +7,6 @@
 2. [Docker command flow](./section-1/dockercommandflow.md) : basic flow of a docker Command
 3. [Docker Container details](./section-1/container.md) : OS resources patitioning techniques and Container, LINUX VM on host OS, behind the scenes of Container creation 
 
-
 --- 
+
 ### Section-2 : manupulating Container using Docker Client

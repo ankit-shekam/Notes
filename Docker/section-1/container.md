@@ -5,9 +5,8 @@
 - OS **Kernel** is a software proces that governs the access of all the processes running on your computer and the hardware.
 - **System call** are the kernel's exposed end points that the applications call to interact with the kernel
 
---- 
 ---
----
+
 - ### Why Containers are better for development?
 
 assume that in  a hypothetical situation : software A needs python V2 and B needs Python V3 to run\
@@ -25,8 +24,7 @@ possible solutions for this :
 ![Container Analogy Image](./images/container_analogy.jpg)
 an morte simplied and general representation of a container would be : 
 ![Container Representation Image](./images/container_representation.jpg)
----
----
+
 ---
 
 - ### What happens behind the scenes when we create a container from an Image?
