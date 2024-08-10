@@ -13,4 +13,17 @@
 
 ### Section-2 : manupulating Container using Docker Client
 
-1. [Docker basic commands](./section-2/basic-commands.md)
+- [Docker basic commands](./section-2/basic-commands.md) : 
+   1. create and run containers from Images
+   2. overwrite default command in images
+   3. list running containers
+   4. clean local resources
+   5. get LOGS from container
+   6. stopping containers
+   7. executing commands inside a running container
+   8. Get shell access inside a running container 
+
+
+---
+
+### section-3 :  
