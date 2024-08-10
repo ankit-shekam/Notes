@@ -5,7 +5,7 @@
 
 
 when you try to run your first command in docker CLI\
-```dokcer run hello-world```\
+`dokcer run hello-world`\
 the flow behind this is : 
 
 1. Docker CLI(client) contacted Docker daemon(server)
