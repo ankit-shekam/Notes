@@ -2,6 +2,7 @@
 Contains my CS Notes from all sources 
 
 ## Contents: 
-1. [LLD Concepts/Questions/Notes](./LLD/LLD.md)
-2. [HLD Concepts/Questions/Notes](./HLD/HLD.md) 
-3. [Docker](./Docker/dockercontent.md)
+- [Core CS](./Core%20CS/core-cs-content.md)
+- [Docker](./Docker/dockercontent.md)
+- [LLD Concepts/Questions/Notes](./LLD/LLD.md)
+- [HLD Concepts/Questions/Notes](./HLD/HLD.md) 
