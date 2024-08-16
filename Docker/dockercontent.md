@@ -11,9 +11,9 @@
 
 --- 
 
-### Section-2 : manupulating Container using Docker Client
+### Section-2 : Manupulating Container using Docker Client
 
-- [Docker basic commands](./section-2/basic-commands.md) : 
+- [Docker Basic Commands](./section-2/basic-commands.md) : 
    1. create and run containers from Images
    2. overwrite default command in images
    3. list running containers
@@ -26,4 +26,8 @@
 
 ---
 
-### section-3 :  
+### section-3 :  Building custom Images
+
+- [what is a dockerfile](./section-3/about-dockerfile.md)
+- [Building Custom Images](./section-3/building-custom-images.md) : 
+   1. Creating Docker Images
