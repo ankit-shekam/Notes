@@ -38,3 +38,13 @@
 --- 
 
 ### section-4 : building a real-world project using Docker
+
+- [simple web app with Docker](./section-4/real-world-docker-project.md)
+   1. Dockerfile for creating container with Node inbuilt, `COPY` instruction
+   2. port mapping for incoming traffic to containerised server
+   3. changing working directory for container, `WORKDIR` instruction
+   4. Using docker build caching properly to improve performance
+
+--- 
+
+### section-5 : Docker-compose - multi-container applications
