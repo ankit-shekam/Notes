@@ -37,15 +37,29 @@ these are executed in order to finally create an image
 eg. - if your build instructions remains same, docker will re use previously created intermediate images during the current build process
 * unless the order gets updated or some intermediate step gets updated values, docker will not re do the download and installations for the intermediate steps, save on the work done and get things build faster
 
+---
+
+### tagging an Image
+
+till now we build images and used their image_ID for running containers from them, now we'll talk about tagging images to be able to run them without having to worry about the image_ID ans rather use assigned name to run those images
+
+`docker build -t docker_user_id/project:latest .` - this will tag the latest build of this image to `docker_user_id/project`
+
+then you can run container from this image using the tagged info : `docker run docker_user_id/project`
+
+![docer build with image tagging](./images/docker-build-with-image-tagging.png)
+![docker image tagging details](./images/docker-image-tagging-details.png)
 
 
+--- 
 
+### creating Image from Container
 
+`docker commit -c 'sartup command' container_id` - output is image_ID
 
+using the container_id of some container already running you can create an image out of it 
 
-
-
-
+it does go both ways image->container/container->image
 
 
 

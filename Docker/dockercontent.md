@@ -30,4 +30,11 @@
 
 - [what is a dockerfile](./section-3/about-dockerfile.md)
 - [Building Custom Images](./section-3/building-custom-images.md) : 
-   1. Creating Docker Images
+   1. Creating Docker Images using dockerfile
+   2. internal caching of docker build process
+   3. tagging images
+   4. creating image from Container
+
+--- 
+
+### section-4 : building a real-world project using Docker
