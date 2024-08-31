@@ -1,4 +1,4 @@
-[back to rpevious page](../dockercontent.md)
+[back to previous page](../dockercontent.md)
 
 --- 
 
