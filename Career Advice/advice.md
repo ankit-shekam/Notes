@@ -1,4 +1,4 @@
-[back to rpevious page](../README.md)
+[back to previous page](../README.md)
 
 --- 
 
