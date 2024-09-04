@@ -13,3 +13,4 @@
 - Learning better and faster as a software engineer
 - Deciding what to learn
 - Learning a new Programming language
+- Learning from Research Papers
