@@ -9,10 +9,19 @@
    - [SOLID Principles](./SOLID-principles.md)
    - [UML diagrams](./UML-diagrams.md)
       - Class Diagram
+      - Component Diagram
+      - Deployment Diagram
+      - Object Diagram
+      - Package Diagram
+      - Composite Structure Diagram
+      - Profile Diagram
       - Use Case Diagram
-      - Sequence Diagram
       - Activity Diagram
       - State Machine Diagram
+      - Sequence Diagram
+      - Communications Diagram
+      - Interaction Overview Diagram
+      - Timing Diagram
 
 2. **Design Patterns**
    - Creational Patterns 
