@@ -7,7 +7,6 @@
 1. **Fundamental Concepts of LLD**
    - [Basics of OOPs](./OOPs-basics.md)
    - [SOLID Principles](./SOLID-principles.md)
-   - [DRY, KISS, YAGNI Principles](./Dry-Kiss-Yagni.md)
    - [UML diagrams](./UML-diagrams.md)
       - Class Diagram
       - Use Case Diagram
