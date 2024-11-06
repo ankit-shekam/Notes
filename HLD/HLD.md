@@ -6,7 +6,7 @@
 
 1. [Scaling a site to support Million users](./scaling-to-million-users.md) (step by step)
 2. [DB horizontal Scaling](./DB-sharding.md)
-3. Back of the envelope estimation
+3. [Back of the envelope estimation](./back-of-the-envelope-est.md)
 4. Design Rate-Limiter
 5. Consistent Hashing
 6. Design K:V store
