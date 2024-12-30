@@ -61,3 +61,38 @@ Focus more on the process and less on correct answers, Solving more important th
          - media : 5MB
       - Meadia Storage : 150 Million(DAU) * 2(avg users tweet count) * 5MB * 0.1 (only 10% tweets contain media) = 150X10^6 MB -> 150 TB per day
       - 5 Year media storage (assuming 100% YOY growth in user base) -> ~ 1700PB
+
+---
+
+**Q : Estimate QPS, Storage, Server requriements for Facebook**
+
+- Assumptions :
+   - 1 Billion total Users, 20% of that are DAU ~ 200 Million Users
+   - Avg User has 2 post per day
+      - 250char avg post (2byte UNICODE chars)
+      - 10% posts have media (1MB)
+   - Need to store 5 years worth of data (1825 days ~ 2000 days roughly)
+   - Avg User has 10 reads & 2 Writes per day
+- Estimation : 
+   - QPS : 
+      - 12 Queries / user / day 
+      - total queries = 200 Million DAU * 12 ~2.5 billion queries per day
+      - QPS = (assuming 100,000 sec per day instead of 86,400 for estimation purpose)
+         - 2.5 billion /100,000 ~ 250K queries/sec
+      - Peak QPS = 2*Normal QPS ~ 500K queries/sec   
+   - Storage : 
+      - per day posts = 200Mill * 2 * 500 Byte ~ 200GB
+      - per day media = 200Mill * 10% * 1MB ~ 20TB
+      - per day storage = per day Posts + per day media ~ 21TB
+      - storing 5 year data = 2000 * 21 TB ~ 42 PB
+   - RAM estimation :
+      - cache 10 last posts per user ~ 10 * 500Byte ~ 5KB
+      - cache for all users = 200 Million * 5KB ~ 1TB
+      - 50GB per machine -> 20 cache servers 
+   - Servers : 
+      - since cache used, we can estimate 90%ile time of <500ms
+      - therefore 1 thread in the server can process 2 requests/sec
+      - assuming mid level large EC2 instance of 50 threads (48 vCPU's)
+      - one machine can process = 100 requests/sec
+      - for QPS of 250K we need -> 2500 servers 
+      - peak demand of 5000 servers

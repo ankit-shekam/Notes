@@ -3,10 +3,11 @@
 ---
 
 # Contains Notes/Questions related to HLD
-- [Framework for System Design Interviews](./hld-interview-framework.md)
+
 - [Top network protocols to know about](../Core%20CS/Networking/networking-content.md) 
-1. [Scaling a site to support Million users](./scaling-to-million-users.md) (step by step)
-2. [DB horizontal Scaling](./DB-sharding.md)
+
+1. [Framework for System Design Interviews](./hld-interview-framework.md)
+2. [Scaling a site to support Million users](./scaling-to-million-users.md) (step by step)
 3. [Back of the envelope estimation](./back-of-the-envelope-est.md)
 4. Design Rate-Limiter
 5. Consistent Hashing

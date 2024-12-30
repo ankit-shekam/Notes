@@ -4,7 +4,7 @@
 
 # Framework for HLD interviews
 
-- Process(how you approach the problem) > final design
+- Process(how you approach the problem) is much more crucial than the final design
 - process is:
    - your design choices (why A over B)
    - Ability to collaborate, work under pressure, resolve ambiguity, asking good questions
