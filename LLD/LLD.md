@@ -50,7 +50,7 @@
       6. Momento Pattern
       7. Observer Pattern
       8. State Pattern
-      9. Strategy Pattern
+      9. [Strategy Pattern](./Behavioral-patterns/strategy-design-patter.md)
       10. Template Method Pattern
       11. Visitor Pattern
 

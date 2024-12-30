@@ -122,7 +122,7 @@ eg. PHONE - call('xyz') will call the person via the various hoops and protocols
 ## Object relationships : Is-A / Has-A
 
 - Is-A relationship : 
-   - achieved through : Inhertance
+   - **achieved through : Inhertance**
    ```
    Parent -> Child
 
@@ -131,9 +131,9 @@ eg. PHONE - call('xyz') will call the person via the various hoops and protocols
    ```
 - Has-A relationship : 
    - aka **COMPOSITION** | **AGGREGATION**
-   - Composition (string relation) - Ending one object will end the other
+   - Composition (strong relation) - Ending one object will end the other
    - Aggregation (weak relation) - both objects can survive individually, ending one wont end the other
-   - Instance of Object of a class used in another class
+   - **Instance of Object of a class used in another class**
    - can be 1:1/many:1/1:many/many:many
    ```
    Class Engine{...}
@@ -143,5 +143,11 @@ eg. PHONE - call('xyz') will call the person via the various hoops and protocols
       ...
    }
    ```
+
+- Key Differences
+   - Nature of Relationship: Is-A: Represents inheritance. A subclass inherits from a superclass. Has-A: Represents composition. A class contains instances of other classes.
+   - Code Reusability: Is-A: Achieves code reuse through inheritance. Has-A: Achieves code reuse through composition.
+   - Flexibility: Is-A: Less flexible as changes in the superclass can affect all subclasses. Has-A: More flexible as changes in the contained class do not affect the containing class directly.
+   - Binding: Is-A: Static binding (compile-time). Has-A: Dynamic binding (run-time).
 
 ---

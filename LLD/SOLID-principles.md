@@ -59,7 +59,7 @@ Class InvoiceDao{
 
 - solution - **Extension**
 ```
-1. Create interface adn define expected behaviour
+1. Create interface and define expected behaviour
 Interface InvoiceDB{
    //save Invoice
 }
@@ -102,6 +102,7 @@ Class MotorBike extends Bike{
 }
 //this subclass can replace the parent class completely 
 ```
+- **Solution** : only keep very generic properties and methods in the parent class
 
 ---
 
@@ -137,7 +138,7 @@ Class Waiter implements WaiterInterface{
 
 ## Dependency Inversion Princple 
 
-- Class should interfaces/abstract-classes rather than Concrete classes
+- Class should depend on interfaces/abstract-classes rather than Concrete classes
 ```
 Interface Mouse{...}
 Class WiredMouse implements Mouse{...}
@@ -145,19 +146,32 @@ Class WiredMouse implements Mouse{...}
 Interface keyboard{...}
 Class WiredKeyboard implements Keyboard{...}
 
-//Not to do 
+// Not to do //
 Class Computer{
-   priavte final WiredKeyboard keyboard1;
-   priavte fianl WiredMouse mouse1;
+   private final WiredKeyboard keyboard1;
+   private final WiredMouse mouse1;
    //dependeing on doncrete classes ->any further changes in those calsses will affect this one 
+
+   public Computer(){
+      this.keyboard1 = new WiredKeyboard();
+      this.mouse1 = new WiredMouse();
+   }
    //tightly coupled different units of the application
 }
 
-// to do 
+// to do //
 Class OpenSourceComputer{
    private final Keyboard keyboard1;
    private final Mouse mouse1;
    //using interfaces - loose coupling and open to further enhancements
+
+   public OpenSourceComputer(Keyboard kb, Mouse m){
+      this.keyboard1 = kb;
+      this.mouse1 = m;
+   }  
+   //in this case you use *constructor injection*
+   //that is, in the constructor you can pass a subtype of keyboard & mouse and that will be asigned to the object
+   
 }
 ```
 
