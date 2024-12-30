@@ -4,7 +4,7 @@
 
 # Networking Protocols : 
 
-- [7 layer networking architecture](./7-layered-OSI-model.md)
+- [7 layer OSI Model](./7-layered-OSI-model.md)
 
 1. [TCP/IP](./TCP-IP.md) (Transmission Control Protocol/Internet Protocol): The fundamental suite for internet communication.
 2. [HTTP](./http.md) (HyperText Transfer Protocol): Used for transferring web pages on the internet.
