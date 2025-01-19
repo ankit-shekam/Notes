@@ -36,7 +36,7 @@
       1. Adapter Pattern
       2. Bridge pattern
       3. Composite Pattern
-      4. Decorator Pattern
+      4. [Decorator Pattern](./Structural-Patterns/decorator-design-pattern.md)
       5. Facade Pattern
       6. Flyweight Pattern
       7. Proxy Pattern
@@ -48,9 +48,9 @@
       4. Iterator Pattern
       5. Mediator Pattern
       6. Momento Pattern
-      7. Observer Pattern
+      7. [Observer Pattern](./Behavioral-patterns/observer-design-pattern.md)
       8. State Pattern
-      9. [Strategy Pattern](./Behavioral-patterns/strategy-design-patter.md)
+      9. [Strategy Pattern](./Behavioral-patterns/strategy-design-pattern.md)
       10. Template Method Pattern
       11. Visitor Pattern
 
