@@ -27,7 +27,7 @@
    - Creational Patterns 
       1. Singleton Pattern
       2. [Factory Pattern](./Creational-Patterns/factory-design-pattern.md)
-      3. Abstract Factory Pattern
+      3. [Abstract Factory Pattern](./Creational-Patterns/Abstract-Factory-Pattern.md)
       4. Builder Pattern
       5. Prototype Pattern
       6. Object Pool Pattern
