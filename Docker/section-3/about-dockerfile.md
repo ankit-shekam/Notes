@@ -1,39 +1,52 @@
 [back to previous file](../dockercontent.md)
 ---
-# What is Dockerfile
 
+# What is a Dockerfile?
 
-### Dockerfile
-It’s a plain text file that contains a series of instructions that the Docker daemon(server) follows step by step to build an image. Think of it as your blueprint for constructing a containerized application.
+## Dockerfile Overview
 
-![image with details on dockerfile](./images/dockerfile.png)
+A **Dockerfile** is a plain text file containing a series of instructions that the Docker Daemon (Server) follows step by step to build an image. Think of it as your blueprint for constructing a containerized application.
 
-
-Here’s how it works:\
-Instructions in Sequence:\
-When you execute the docker build command, Docker reads the Dockerfile line by line, executing each instruction in the order they appear.\
-These instructions define everything needed to set up your application environment within the image.
-
-![image with detila on dockerfile flow](./images/dockerfile-flow.png)
-
-Common Instructions:
-Let’s peek at some common instructions you’ll find in a Dockerfile:
-- FROM: The first instruction—it specifies the base image you’re building upon. Every Dockerfile starts with this. For example, FROM ubuntu:20.04.
-- RUN: Execute commands during the build process. Install packages, set up dependencies, etc.
-- COPY and ADD: Copy files from your local machine into the image.
-- ENV: Set environment variables.
-- EXPOSE: Declare which ports your application listens on.
-- CMD and ENTRYPOINT: Define the default command to run when a container starts.
-
-Layered Approach:\
-Docker builds images in layers. Each instruction in the Dockerfile creates a new layer.\
-Layers are cached, so if you change one instruction, only the subsequent layers need rebuilding.\
-This layering makes image creation efficient and allows for easy sharing of common layers across different images.
-
-Example Dockerfile:
-
+```mermaid
+flowchart LR
+    DF["Dockerfile — Configuration defining how our container should behave"] --> CLI["Docker Client"] --> SRV["Docker Server (Daemon)"] --> IMG["Usable Image!"]
 ```
-#Use an official Python base image
+
+---
+
+## How It Works: Instructions in Sequence
+
+When you execute `docker build`, Docker reads the Dockerfile line by line, executing each instruction in order to assemble your application environment inside the image:
+
+```mermaid
+flowchart TB
+    S1["1. Specify a base image (FROM)"] --> S2["2. Run commands to install additional programs & dependencies (RUN / COPY)"] --> S3["3. Specify a command to run on container startup (CMD / ENTRYPOINT)"]
+```
+
+---
+
+## Common Instructions
+
+| Instruction | Purpose |
+| :--- | :--- |
+| **`FROM`** | The first instruction—specifies the base image you are building upon (e.g., `FROM ubuntu:20.04`). Every Dockerfile starts with this. |
+| **`RUN`** | Executes commands during the **build process** (installing packages, compiling code, setting up dependencies). |
+| **`COPY` / `ADD`** | Copies files from your local machine (build context) into the image. |
+| **`WORKDIR`** | Sets the working directory inside the container for subsequent instructions. |
+| **`ENV`** | Sets environment variables inside the image/container. |
+| **`EXPOSE`** | Documents which network ports the application listens on. |
+| **`CMD` / `ENTRYPOINT`** | Defines the default startup command executed when a container starts from this image. |
+
+---
+
+## Layered Approach & Caching
+
+Docker builds images in **layers**—each instruction in the Dockerfile creates a new read-only layer. Layers are cached so that if you change one instruction, only that instruction and subsequent layers need rebuilding. This makes builds fast and allows common base layers to be shared across multiple images.
+
+### Example Dockerfile
+
+```dockerfile
+# Use an official Python base image
 FROM python:3.9
 
 # Set the working directory
@@ -49,13 +62,18 @@ RUN pip install -r requirements.txt
 CMD ["python", "app.py"]
 ```
 
-Building the Image:
-Run `docker build -t myapp .` in the same directory as your Dockerfile.
-Docker will execute the instructions, create layers, and produce an image tagged as myapp.
+---
 
-- new versions of docker-desktop have buildkit enabled by default that create `sha` based image IDs, where the real image ID value id followed by colon after the sha e.g. `sha:image_ID`
+## Building and Running the Image
 
-
-Running a Container:\
-Once you have the image, you can spin up containers from it using docker run.\
-The container inherits everything from the image, including the environment and the default command.
+* **Build the image:**
+  ```bash
+  docker build -t myapp .
+  ```
+  Docker executes the instructions in order, creates layers, and produces an image tagged `myapp`.
+  * *Note:* Modern versions of Docker Desktop have **BuildKit** enabled by default, which generates `sha256`-based image digests (`sha256:<image_id>`).
+* **Run a container from the image:**
+  ```bash
+  docker run myapp
+  ```
+  The container inherits the image's file system snapshot, environment variables, and default startup command.
