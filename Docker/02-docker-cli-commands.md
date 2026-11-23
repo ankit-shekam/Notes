@@ -1,7 +1,17 @@
-[back to previous file](../dockercontent.md)
+[back to Docker index](./dockercontent.md)
 ---
 
-# Basic Commands: Getting Started with Docker
+# Part 2: Manipulating Containers with the Docker CLI
+
+## Table of Contents
+1. [Creating and Running a Container from an Image](#1-creating-and-running-a-container-from-an-image)
+2. [Overriding the Default Startup Command in an Image](#2-overriding-the-default-startup-command-in-an-image)
+3. [Listing Containers](#3-listing-containers)
+4. [Clearing Unused Local Resources](#4-clearing-unused-local-resources)
+5. [Getting Logs from a Container](#5-getting-logs-from-a-container)
+6. [Stopping Containers (`stop` vs. `kill`)](#6-stopping-containers-stop-vs-kill)
+7. [Executing Commands Inside a Running Container](#7-executing-commands-inside-a-running-container)
+8. [Getting Shell Access Inside a Running Container](#8-getting-shell-access-inside-a-running-container)
 
 ---
 
@@ -242,3 +252,7 @@ ankit@pc:~$
 * **If you started the container via `docker run -it <image_name> sh`:**
   * The shell (`sh`) **is the primary process (PID 1)** of that container.
   * Typing `exit` (or `Ctrl + D`) terminates PID 1 and **stops the container completely**. *(Tip: To detach from a `docker run -it` shell without stopping the container, press **`Ctrl + P` followed by `Ctrl + Q`**.)*
+
+---
+
+**Next:** [Part 3: Dockerfiles & Building Custom Images →](./03-dockerfiles-and-custom-images.md)

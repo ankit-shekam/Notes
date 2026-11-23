@@ -14,7 +14,7 @@
 
 ## 1. Apps Run in Containers & The Scale Problem
 
-* **What is a Container?** A container is an application packaged together with all the files, libraries, and runtime dependencies it needs to run—isolated by Linux **Namespaces** and constrained by **cgroups** (see [Docker Container Internals](../Docker/section-1/container.md)).
+* **What is a Container?** A container is an application packaged together with all the files, libraries, and runtime dependencies it needs to run—isolated by Linux **Namespaces** and constrained by **cgroups** (see [Docker Container Internals](../Docker/01-docker-basics-and-container-internals.md#3-container-internals)).
 * **The Developer's Laptop Analogy:** Because the container holds its entire runtime environment ("a ready-to-run box"), it behaves identically on a remote production server as it did on a developer's local machine.
 * **Where Single-Host Docker Stops & Orchestration Begins:**
   * *Single-container deployment:* Trivial—usually one command (`docker run` or `podman run`), or a single-machine `docker compose up`.
@@ -143,7 +143,7 @@ The machines where application containers actually run. Every Worker Node runs t
 | Component | Role & Production Notes |
 | :--- | :--- |
 | **`kubelet`** | **The Node agent.** Runs on every Worker Node, watches the API Server for Pods assigned to *its* node, instructs the container runtime to start/stop containers, executes Liveness/Readiness/Startup probes, mounts volumes, and continuously reports Pod and Node health back to the API Server. |
-| **Container Runtime (`containerd` / `CRI-O`)** | **The container engine.** Communicates with `kubelet` over the **CRI (Container Runtime Interface)**, pulls OCI-compliant images (including images built with `docker build`!), and delegates to low-level **`runc`** to create Linux Namespaces and cgroups. *(See [OCI & CRI Bridge](../Docker/section-6/production-docker-and-internals.md#6-container-runtime-internals-oci-containerd-runc--the-bridge-to-kubernetes).)* |
+| **Container Runtime (`containerd` / `CRI-O`)** | **The container engine.** Communicates with `kubelet` over the **CRI (Container Runtime Interface)**, pulls OCI-compliant images (including images built with `docker build`!), and delegates to low-level **`runc`** to create Linux Namespaces and cgroups. *(See [OCI & CRI Bridge](../Docker/06-production-docker-and-internals.md#6-container-runtime-internals-oci-containerd-runc--the-bridge-to-kubernetes).)* |
 | **`kube-proxy` (or eBPF dataplane like Cilium)** | **The Node network proxy.** Maintains network routing rules (`iptables`, `IPVS`, or modern kernel **eBPF** via Cilium) on each Node so that traffic sent to a Kubernetes **Service** virtual IP (`ClusterIP`) is transparently load-balanced to healthy backend Pods across the cluster. |
 
 > **One-Sentence Architecture Summary:**

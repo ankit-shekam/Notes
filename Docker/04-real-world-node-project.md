@@ -1,7 +1,15 @@
-[back to previous file](../dockercontent.md)
+[back to Docker index](./dockercontent.md)
 ---
 
-# Real-World Docker Project: Node.js Web Server
+# Part 4: Real-World Docker Project (Node.js Web Server)
+
+## Table of Contents
+1. [Initial `Dockerfile` & The `COPY` Instruction](#1-initial-dockerfile--the-copy-instruction)
+2. [Port Mapping for Incoming Traffic](#2-port-mapping-for-incoming-traffic)
+3. [Setting the Working Directory (`WORKDIR`)](#3-setting-the-working-directory-workdir)
+4. [Optimizing Performance with Build Caching](#4-optimizing-performance-with-build-caching)
+
+---
 
 ## 1. Initial `Dockerfile` & The `COPY` Instruction
 
@@ -153,3 +161,7 @@ COPY ./ ./
 
 CMD ["npm", "start"]
 ```
+
+---
+
+**Next:** [Part 5: Docker Compose & Multi-Container Applications →](./05-docker-compose-multi-container.md)

@@ -1,12 +1,11 @@
-[back to previous file](../dockercontent.md)
+[back to Docker index](./dockercontent.md)
 ---
 
-# Production Docker, Networking, Storage & The Bridge to Kubernetes
+# Part 6: Production Docker, Networking, Storage & The Bridge to Kubernetes
 
 > This section fills the critical production gaps between local Docker basics (`docker run` / basic `docker-compose`) and running containerized workloads in Kubernetes clusters.
 
 ## Table of Contents
-
 1. [Docker Storage: Volumes, Bind Mounts & `tmpfs`](#1-docker-storage-volumes-bind-mounts--tmpfs)
 2. [Docker Networking Deep Dive](#2-docker-networking-deep-dive)
 3. [Production `Dockerfile` Best Practices](#3-production-dockerfile-best-practices)
@@ -359,8 +358,10 @@ flowchart LR
 
 * **OCI (Open Container Initiative)**: Standardizes the **image format** and **runtime spec**. Any image built by `docker build`, `podman`, or `kaniko` is an OCI image and runs identically on `containerd` or `CRI-O`.
 * **CRI (Container Runtime Interface)**: The gRPC API Kubernetes' `kubelet` uses to talk to container runtimes.
-* **Why Kubernetes removed `dockershim` (v1.24)**: Docker (`dockerd`) was a full developer platform sitting *on top of* `containerd`. Kubernetes didn't need Docker's CLI, Compose, or BuildKit on worker nodes—so `kubelet` now speaks directly to **`containerd`** (or **`CRI-O`**), which calls **`runc`** to create the Linux **Namespaces** and **cgroups** you learned about in [Section 1: Container Internals](../section-1/container.md).
+* **Why Kubernetes removed `dockershim` (v1.24)**: Docker (`dockerd`) was a full developer platform sitting *on top of* `containerd`. Kubernetes didn't need Docker's CLI, Compose, or BuildKit on worker nodes—so `kubelet` now speaks directly to **`containerd`** (or **`CRI-O`**), which calls **`runc`** to create the Linux **Namespaces** and **cgroups** you learned about in [Section 1: Container Internals](./01-docker-basics-and-container-internals.md#3-container-internals).
 
 ---
 
-**Next Step:** Ready to scale containers across production clusters? Head over to the **[Complete Kubernetes Study Notes](../../Kubernetes/kubernetes-content.md)**.
+**Next Topic:** Ready to scale containers across production clusters? → [The Complete Kubernetes Study Notes](../Kubernetes/kubernetes-content.md)
+
+[← Back to Docker Index](./dockercontent.md) | [← Back to Main Notes README](../README.md)

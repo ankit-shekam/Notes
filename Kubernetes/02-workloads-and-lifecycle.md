@@ -198,7 +198,7 @@ flowchart TB
 
 ### The Zero-Downtime Shutdown Checklist
 1. **Add a `preStop` sleep (`sleep 5`)**: Because Path A (removing the Pod IP from load balancers/iptables) is asynchronous, a `5–10s` `preStop` hook ensures your app keeps serving in-flight requests until all traffic stops arriving, *before* `SIGTERM` triggers shutdown.
-2. **Use Exec Form in your `Dockerfile` (`CMD ["node", "server.js"]`)**: As covered in [Docker PID 1 & SIGTERM](../Docker/section-6/production-docker-and-internals.md#4-the-pid-1--sigterm-gotcha-cmd-vs-entrypoint), using shell form (`CMD node server.js`) runs `/bin/sh` as PID 1, which **swallows `SIGTERM`** and causes Kubernetes to brutally kill your app with `SIGKILL` after 30 seconds!
+2. **Use Exec Form in your `Dockerfile` (`CMD ["node", "server.js"]`)**: As covered in [Docker PID 1 & SIGTERM](../Docker/06-production-docker-and-internals.md#4-the-pid-1--sigterm-gotcha-cmd-vs-entrypoint), using shell form (`CMD node server.js`) runs `/bin/sh` as PID 1, which **swallows `SIGTERM`** and causes Kubernetes to brutally kill your app with `SIGKILL` after 30 seconds!
 3. **Handle `SIGTERM` in application code**: Stop accepting new connections, finish in-flight HTTP requests / DB transactions, close connection pools cleanly, and exit with status `0`.
 
 ---
