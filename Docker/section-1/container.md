@@ -1,42 +1,172 @@
 [back to previous file](../dockercontent.md)
 ---
 
-# Container
+# Container Internals
 
-- **how your OS works**\
-![OS Overview Image](./images/OSoverview.jpg)
-- OS **Kernel** is a software proces that governs the access of all the processes running on your computer and the hardware.
-- **System call** are the kernel's exposed end points that the applications call to interact with the kernel
+## How Your OS Works
+
+* The **OS Kernel** is a core software process that governs access between all running processes on your computer and the physical hardware.
+* **System Calls** are the kernel's exposed endpoints that running applications invoke whenever they need to interact with hardware (CPU, memory, disk, network).
+
+```mermaid
+flowchart TB
+    subgraph Procs["Processes Running on Your Computer"]
+        direction LR
+        P1["Chrome"]
+        P2["Terminal"]
+        P3["Spotify"]
+        P4["NodeJS"]
+    end
+
+    SC["System Calls — Running program requests kernel to interact with hardware"]
+    K["OS Kernel"]
+
+    subgraph HW["Hardware"]
+        direction LR
+        CPU["CPU"]
+        MEM["Memory (RAM)"]
+        HD["Hard Disk"]
+    end
+
+    Procs --> SC --> K
+    K --> CPU
+    K --> MEM
+    K --> HD
+```
 
 ---
 
-- ### Why Containers are better for development?
+## Why Containers Are Better for Development
 
-assume that in  a hypothetical situation : software A needs python V2 and B needs Python V3 to run\
-another limitation : you can only have instance of python at a time\
-possible solutions for this :
-1. **NameSpacing** feature of the OS (divide the hardware into 2 namespaces and install different python Versions on each) - provide A access to the segment to the one with V2 and B to the one with V3, kernel can manage the segment access based on the system call by A or B
-![Namespaces and Control Groups Image](./images/namespacing_ctrl_grps.jpg)
-**Namespace** not just limited to hardware division\
-**Control group** is another concept for limiting resources per process
-- these 2 concepts are LINUX specific : how does then Docker work on other OS -> LINUX Virtual Machine
-- when you install Docker Desktop on some other OS -> it installs LINUX VM as well ans uses that as another layer of abstraction of top of the host OS to mimic LINUX environment 
-![Linux VM on Host OS for Docker Image](./images/Linux_VM_for_Docker.jpg)
+Suppose a hypothetical situation where **Chrome (App A)** needs **Python v2** and **NodeJS (App B)** needs **Python v3**, with the limitation that a standard OS filesystem normally expects one system installation at a time.
 
-2. **Container** : a container has access to a set/group of resources assigned to that process (not a physical contruct)
-![Container Analogy Image](./images/container_analogy.jpg)
-an morte simplied and general representation of a container would be : 
-![Container Representation Image](./images/container_representation.jpg)
+Linux solves this using two kernel primitives:
+
+1. **Namespacing:** Isolates resources per process (or group of processes) so each process sees its own dedicated slice of the system (e.g., Chrome's process sees a hard disk segment containing Python v2, while NodeJS sees a segment containing Python v3).
+2. **Control Groups (cgroups):** Limits the *amount* of hardware resources (memory, CPU, disk I/O, network bandwidth) a process can consume.
+
+```mermaid
+flowchart TB
+    subgraph NS_GROUP["1. Namespacing — Isolating resources per process"]
+        direction TB
+        N1["Processes (PID)"] ~~~ N4["Users"]
+        N2["Hard Drive (Mount)"] ~~~ N5["Hostnames (UTS)"]
+        N3["Network"] ~~~ N6["Inter-Process Communication (IPC)"]
+    end
+
+    subgraph CG_GROUP["2. Control Groups (cgroups) — Limiting resource usage per process"]
+        direction TB
+        C1["Memory"] ~~~ C3["HD I/O"]
+        C2["CPU Usage"] ~~~ C4["Network Bandwidth"]
+    end
+
+    NS_GROUP ~~~ CG_GROUP
+```
+
+### How Docker Runs on macOS and Windows
+
+Because **Namespaces** and **cgroups** are **Linux-specific** kernel features, installing Docker Desktop on macOS or Windows installs a lightweight **Linux Virtual Machine** on top of your host OS to provide a real Linux Kernel for your containers:
+
+```mermaid
+flowchart TB
+    subgraph VM["Linux Virtual Machine"]
+        direction TB
+        subgraph Conts["Isolated Containers"]
+            direction LR
+            R1["Running Process A"]
+            R2["Running Process B"]
+            R3["Running Process C"]
+        end
+        LK["Linux Kernel (Namespaces + cgroups)"]
+        R1 --> LK
+        R2 --> LK
+        R3 --> LK
+    end
+
+    VM --> HOST["macOS / Windows Host OS"]
+    HOST --> HW["Your Computer's Hardware"]
+```
 
 ---
 
-- ### What happens behind the scenes when we create a container from an Image?
-Image contains:
-1. File System Snapshot : info about a set of required directories, tools
-2. Startup Command : self explanatory
+## Container Analogy & Mental Model
 
-once you try to execute the image : 
-1. Kernel isolated the resources for the Container
-2. The tools in the FS snapshot are then installed in the seciton of hardware
-3. startup command then gets executed and starts the required process
-![docker image to Container flow Image](./images/Image_to_container.jpg)
+A **Container** is **not** a physical box—it is simply a running process (or group of processes) paired with an isolated, resource-limited slice of the host's hardware managed by the kernel.
+
+### Hard Disk Segmentation Analogy (Python v2 vs. Python v3)
+
+```mermaid
+flowchart TB
+    subgraph C1["Container (Isolated Scope)"]
+        A["Chrome (Needs Python v2)"]
+    end
+    B["NodeJS (Needs Python v3)"]
+
+    SC["System Call to read Hard Disk"]
+    K["Kernel: Which process is making this system call?"]
+
+    subgraph HD["Hard Disk"]
+        direction LR
+        SEG1["HD Segment for Chrome: Python v2"]
+        SEG2["HD Segment for NodeJS: Python v3"]
+    end
+
+    A --> SC
+    B --> SC
+    SC --> K
+    K -->|Chrome| SEG1
+    K -->|NodeJS| SEG2
+```
+
+### Simplified General Representation of a Container
+
+```mermaid
+flowchart TB
+    subgraph Container["Container"]
+        P["Running Process (e.g. Chrome)"]
+        K["Linux Kernel (enforcing Namespaces & cgroups)"]
+        subgraph Slice["Portion of Resources Made Available to Process"]
+            direction LR
+            HD["Hard Drive"]
+            NET["Network"]
+            RAM["RAM"]
+            CPU["CPU"]
+        end
+        P --> K --> Slice
+    end
+```
+
+---
+
+## What Happens Behind the Scenes When Creating a Container from an Image?
+
+An **Image** contains two core things:
+1. **File System (FS) Snapshot:** A packaged set of required directories, binaries, and tools (e.g., Chrome, Python).
+2. **Startup Command:** The default command to execute when the container starts (e.g., `> Run Chrome`).
+
+When you run the image:
+1. The **Kernel** carves out an isolated set of resources (Namespaces + cgroups) for the container.
+2. The **FS Snapshot** is mounted/placed into that container's isolated hard drive segment.
+3. The **Startup Command** executes, launching the target process inside the container.
+
+```mermaid
+flowchart TB
+    subgraph IMG["Docker Image"]
+        FS["FS Snapshot: Chrome, Python"]
+        CMD["Startup Command: Run Chrome"]
+    end
+
+    subgraph CONT["Running Container"]
+        K["Linux Kernel"]
+        RES["Isolated Resources: RAM | CPU | Network | Disk"]
+        HD["Isolated Hard Drive: Chrome, Python installed"]
+        PROC["Running Process: Chrome"]
+
+        K ==>|"1. Kernel isolates hardware slice"| RES
+        RES -->|"Disk slice ready"| HD
+        HD -->|"Binaries ready"| PROC
+    end
+
+    FS ==>|"2. FS Snapshot placed into isolated disk"| HD
+    CMD ==>|"3. Startup Command launches process"| PROC
+```
