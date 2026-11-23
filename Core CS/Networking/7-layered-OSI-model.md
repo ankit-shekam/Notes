@@ -1,6 +1,5 @@
 [back to previous page](./networking-content.md)
-
---- 
+---
 
 ## OSI Model : 
 

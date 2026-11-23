@@ -1,6 +1,5 @@
 [back to previous page](./advice.md)
-
---- 
+---
 
 # What not to do as a Software Engineer
 

@@ -1,5 +1,4 @@
 [back to previous page](./HLD.md)
-
 ---
 
 # Scaling to Million Users

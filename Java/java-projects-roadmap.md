@@ -1,5 +1,4 @@
 [back to previous page](../README.md)
-
 ---
 
 # Java & JVM Mastery Roadmap (3–4 Months): LLD, Concurrency, Project Loom, JVM Tuning & Agentic Systems

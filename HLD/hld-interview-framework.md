@@ -1,5 +1,4 @@
 [back to previous page](./HLD.md)
-
 ---
 
 # Framework for HLD interviews

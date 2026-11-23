@@ -7,6 +7,7 @@ Contains my CS Notes from all sources
 - [Java & JVM Mastery Roadmap (Projects)](./Java/java-projects-roadmap.md)
 - [Python Mastery Roadmap (Projects)](./Python/python-projects-roadmap.md)
 - [Docker](./Docker/dockercontent.md)
+- [Kubernetes & Cloud-Native Ecosystem](./Kubernetes/kubernetes-content.md)
 - [LLD Concepts/Questions/Notes](./LLD/LLD.md)
 - [HLD Concepts/Questions/Notes](./HLD/HLD.md) 
 - [Software/Career Advice](./Career%20Advice/advice.md)

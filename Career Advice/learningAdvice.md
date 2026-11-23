@@ -1,5 +1,4 @@
 [back to previous page](./advice.md)
-
 ---
 
 # Learn better and faster as a Software Engineer 

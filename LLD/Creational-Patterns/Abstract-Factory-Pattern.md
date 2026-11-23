@@ -1,5 +1,4 @@
 [back to previous page](../LLD.md)
-
 ---
 
 ### Abstract Factory Pattern

@@ -1,6 +1,5 @@
 [back to previous page](../core-cs-content.md)
-
---- 
+---
 
 # Networking Protocols : 
 

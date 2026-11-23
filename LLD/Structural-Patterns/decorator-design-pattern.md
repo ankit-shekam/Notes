@@ -1,5 +1,4 @@
 [back to previous page](../LLD.md)
-
 ---
 The Decorator design pattern allows behavior to be added to individual objects, dynamically, without affecting the behavior of other objects from the same class. It is typically used to adhere to the Single Responsibility Principle by allowing functionality to be divided between classes with unique areas of concern.
 

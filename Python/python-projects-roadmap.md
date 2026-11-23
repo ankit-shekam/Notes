@@ -1,5 +1,4 @@
 [back to previous page](../README.md)
-
 ---
 
 # Python Mastery Roadmap (4 Months / 4 Stages): Senior Backend, Agentic AI & ML Systems Engineering
