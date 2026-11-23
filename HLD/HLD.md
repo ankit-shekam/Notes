@@ -3,20 +3,50 @@
 
 # Contains Notes/Questions related to HLD
 
-- [Top network protocols to know about](../Core%20CS/Networking/networking-content.md) 
-
-1. [Framework for System Design Interviews](./hld-interview-framework.md)
-2. [Scaling a site to support Million users](./scaling-to-million-users.md) (step by step)
-3. [Back of the envelope estimation](./back-of-the-envelope-est.md)
-4. Design Rate-Limiter
-5. Consistent Hashing
-6. Design K:V store
-7. Design UUID generator
-8. Design URL shortner
-9. Desing Web-Crawler
-10. Design Notification system
-11. Design news feed system
-12. Design search-autocomplete
-13. Design Youtube
-14. Design G-Drive
-15. Microservice Design Patterns
+1. [HLD Interview Framework](./HLD-Interview-framework.md)
+2. Core Concepts
+    1. Numbers to Know
+    2. [Networking Essentials](./Networking-Essentials.md)
+    3. [API Design](./API-Design.md)   
+    4. DB Modeling
+    5. DB Indexing
+    6. Caching
+    7. Sharding
+    8. Consistent Hashing
+    9. CAP Theorem
+3. Patterns
+    1. Real-Time Updates
+    2. Dealing with Contention
+    3. Multi-Step processing
+    4. Scaling Reads
+    5. Scaling Writes
+    6. Hanlding Large Blobs
+    7. Managing Long Running tasks
+    8. proximity-Based services
+4. Key technologies
+    1. Redis
+    2. ElasticSeach
+    3. Kafka
+    4. Temporal
+    5. API gateway
+    6. Cassandra
+    7. DynamoDB
+    8. PostgreSQL
+    9. Flink
+    10. Zookeeper
+5. Advanced Topics
+    1. Proximity Search
+    2. Data Structures for big data
+    3. Vector DB
+    4. Time-Series DB
+    5. Change Data Capture
+6. Real world Systems on planet scale
+    1. Slack's job queue
+    2. Meta's DB Scaling techniques
+    3. Figma's Multiplayer on CRDT's
+    4. Shopify Data Lake
+    5. Discord message Storage
+    6. Shopify inventory reservations
+7. Microservice Design Patterns
+7. QUESTIONS\
+32 Question breakdown on hello interview - https://www.hellointerview.com/learn/system-design/problem-breakdowns/bitly
