@@ -5,15 +5,15 @@
 
 1. [HLD Interview Framework](./HLD-Interview-framework.md)
 2. Core Concepts
-    1. Numbers to Know
+    1. [Numbers to Know](./Numbers-To-Know.md)
     2. [Networking Essentials](./Networking-Essentials.md)
     3. [API Design](./API-Design.md)   
-    4. DB Modeling
-    5. DB Indexing
-    6. Caching
-    7. Sharding
-    8. Consistent Hashing
-    9. CAP Theorem
+    4. [Data Modeling](./Data-Modeling.md)
+    5. [DB Indexing](./DB-Indexing.md)
+    6. [Caching](./Caching.md)
+    7. [Sharding](./Sharding.md)
+    8. [Consistent Hashing](./Consistent-Hashing.md)
+    9. [CAP Theorem](./CAP-Theorem.md)
 3. Patterns
     1. Real-Time Updates
     2. Dealing with Contention
