@@ -471,12 +471,15 @@ When user interactions are naturally localized, partition data and compute by ge
 When a downstream dependency crashes, a flood of retries can cause a **thundering herd** and **cascading failures** that prevent the dependency from ever booting back up. A **Circuit Breaker** wraps network calls and short-circuits failing dependencies:
 
 ```mermaid
-stateDiagram-v2
-    [*] --> Closed
-    Closed --> Open: Failure threshold exceeded (Trip!)
-    Open --> HalfOpen: Cooldown timeout expires
-    HalfOpen --> Closed: Test request succeeds
-    HalfOpen --> Open: Test request fails
+flowchart LR
+    C["Closed"] -->|"Failure threshold exceeded"| O["Open"]
+    O -->|"Cooldown expires"| H["Half-Open"]
+    H -->|"Test succeeds"| C
+    H -->|"Test fails"| O
+
+    style C fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    style O fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
+    style H fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f
 ```
 
 * **Closed:** Requests flow normally while failures are monitored.
